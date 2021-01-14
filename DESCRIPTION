@@ -17,5 +17,6 @@ Imports:
     data.table,
     bit64,
     shiny.semantic,
-    semantic.dashboard
+    semantic.dashboard,
+    leaflet
 RoxygenNote: 7.1.1
