@@ -33,4 +33,5 @@ vignettes/*.pdf
 ### R.Bookdown Stack ###
 # R package: bookdown caching files
 /*_files/
+*/.DS_Store
 # End of https://www.toptal.com/developers/gitignore/api/r
