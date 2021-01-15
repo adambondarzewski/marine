@@ -18,5 +18,6 @@ Imports:
     bit64,
     shiny.semantic,
     semantic.dashboard,
-    leaflet
+    leaflet,
+    shinyjs
 RoxygenNote: 7.1.1
