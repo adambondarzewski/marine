@@ -11,8 +11,8 @@ filterVasselsInput <- function(id, vasselsTypes) {
   ns <- NS(id)
 
   tagList(
-    selectInput("vasselType", "Vassel type", choices = vasselsTypes),
-    uiOutput(ns("vasselNameControl"))
+    selectInput(ns("vasselType"), "Vassel type", choices = vasselsTypes),
+    uiOutput(ns("nameControl"))
   )
 }
 
@@ -28,19 +28,21 @@ filterVasselsServer <- function(id) {
     id,
     function(input, output, session) {
 
-      # observe(input$vasselType, {
-      #   req(input$vasselType)
-      #   shinyjs::enable(shiny::NS("vasselName"))
-      # })
+      ns <- session$ns
 
-      output$vasselNameControl <- renderUI({
+      output$nameControl <- renderUI({
         ns <- session$ns
 
-        # req(input$vasselType)
-        # vasselsCurrent <- vasselsPerType[[input$vasselType]]
-        shinyjs::disabled(
-          selectInput(ns("vasselName"), "Vassel name", c("a", "b"))
-        )
+        req(input$vasselType)
+        vasselsCurrent <- vasselsPerType[[input$vasselType]]
+        selectInput(ns("vasselName"), "Vassel name", "")
+      })
+
+      observeEvent(input$vasselType,
+                   ignoreNULL = TRUE, {
+        req(input$vasselType)
+        vasselsCurrent <- vasselsPerType[[input$vasselType]]
+        updateSelectInput(session, "vasselName", choices = vasselsCurrent)
       })
     }
   )

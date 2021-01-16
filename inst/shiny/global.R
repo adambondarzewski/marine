@@ -26,7 +26,7 @@ vasselsTypes <- vasselsTableInitial %>%
 
 vasselsPerType <- lapply(vasselsTypes, function(x, tableIn) {
   tableIn %>%
-    filter(ship_type == vasselsTypes[1]) %>%
+    filter(ship_type == x) %>%
     pull(SHIPNAME) %>%
     unique()
 }, tableIn = vasselsTableInitial)
