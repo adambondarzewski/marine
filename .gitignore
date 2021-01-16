@@ -35,4 +35,3 @@ vignettes/*.pdf
 /*_files/
 */.DS_Store
 # End of https://www.toptal.com/developers/gitignore/api/r
-**/*.csv

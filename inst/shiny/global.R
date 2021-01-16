@@ -3,7 +3,12 @@ library(magrittr)
 library(dplyr)
 library(Marine)
 
-vesselsTableInitial <- fread(system.file(package = "Marine", "extdata/vessels.csv"))
+dirUnzipped <- tempdir()
+unzip(zipfile = system.file(package = "Marine", "extdata/vessels.zip"),
+      junkpaths = TRUE,
+      exdir = dirUnzipped)
+
+vesselsTableInitial <- fread(file.path(dirUnzipped, "vessels.csv"))
 
 # solution taken from
 # https://stackoverflow.com/questions/60944443/calculate-euclidean-distance-between-points-with-rolling-function-in-data-table
