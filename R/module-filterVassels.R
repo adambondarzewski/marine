@@ -21,7 +21,7 @@ filterVesselsInput <- function(id, vesselsTypes) {
 #'
 #' @param id
 #'
-#' @return data.table; row of data corresponding to chosen vessel
+#' @return data.table; row of data corresponding to chosen vessel or NULL in case input is not ready
 #' @export
 filterVesselsServer <- function(id) {
   moduleServer(
@@ -44,6 +44,16 @@ filterVesselsServer <- function(id) {
         vesselsCurrent <- vesselsPerType[[input$vesselType]]
         updateSelectInput(session, "vesselName", choices = vesselsCurrent)
       })
+
+      out <- reactive({
+        if (isTruthy(input$vesselName)) {
+          vesselsTable %>% dplyr::filter(SHIPNAME == input$vesselName)
+        } else {
+          NULL
+        }
+      })
+
+      return(out)
     }
   )
 }
