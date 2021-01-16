@@ -1,6 +1,7 @@
 library(shiny)
 library(semantic.dashboard)
 library(shinyjs)
+library(leaflet)
 
 # Define UI for application that draws a histogram
 shinyUI(dashboardPage(
@@ -11,6 +12,9 @@ shinyUI(dashboardPage(
     )),
     dashboardBody(
         useShinyjs(),
+        box(
+            showOnMapOutput("main")
+        ),
         box(
             fluidRow(
                 filterVesselsInput("main", vesselsTypes)
