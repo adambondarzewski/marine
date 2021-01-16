@@ -13,7 +13,7 @@ shinyUI(dashboardPage(
         useShinyjs(),
         box(
             fluidRow(
-                filterVasselsInput("main", vasselsTypes)
+                filterVesselsInput("main", vasselsTypes)
             )
         )
 

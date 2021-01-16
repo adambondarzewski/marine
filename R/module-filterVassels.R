@@ -1,17 +1,17 @@
 #' Title
 #'
 #' @param id
-#' @param vasselsTypes
+#' @param vesselsTypes
 #'
 #' @return
 #' @export
 #'
 #' @examples
-filterVasselsInput <- function(id, vasselsTypes) {
+filterVesselsInput <- function(id, vesselsTypes) {
   ns <- NS(id)
 
   tagList(
-    selectInput(ns("vasselType"), "Vassel type", choices = vasselsTypes),
+    selectInput(ns("vesselType"), "vessel type", choices = vesselsTypes),
     uiOutput(ns("nameControl"))
   )
 }
@@ -21,9 +21,9 @@ filterVasselsInput <- function(id, vasselsTypes) {
 #'
 #' @param id
 #'
-#' @return
+#' @return data.table; row of data corresponding to chosen vessel
 #' @export
-filterVasselsServer <- function(id) {
+filterVesselsServer <- function(id) {
   moduleServer(
     id,
     function(input, output, session) {
@@ -33,16 +33,16 @@ filterVasselsServer <- function(id) {
       output$nameControl <- renderUI({
         ns <- session$ns
 
-        req(input$vasselType)
-        vasselsCurrent <- vasselsPerType[[input$vasselType]]
-        selectInput(ns("vasselName"), "Vassel name", "")
+        req(input$vesselType)
+        vesselsCurrent <- vesselsPerType[[input$vesselType]]
+        selectInput(ns("vesselName"), "vessel name", "")
       })
 
-      observeEvent(input$vasselType,
+      observeEvent(input$vesselType,
                    ignoreNULL = TRUE, {
-        req(input$vasselType)
-        vasselsCurrent <- vasselsPerType[[input$vasselType]]
-        updateSelectInput(session, "vasselName", choices = vasselsCurrent)
+        req(input$vesselType)
+        vesselsCurrent <- vesselsPerType[[input$vesselType]]
+        updateSelectInput(session, "vesselName", choices = vesselsCurrent)
       })
     }
   )
