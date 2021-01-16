@@ -3,4 +3,6 @@
 export("%>%")
 export(filterVesselsInput)
 export(filterVesselsServer)
+export(showOnMapOutput)
+export(showOnMapServer)
 importFrom(magrittr,"%>%")

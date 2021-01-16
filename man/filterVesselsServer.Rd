@@ -10,7 +10,7 @@ filterVesselsServer(id)
 \item{id}{}
 }
 \value{
-data.table; row of data corresponding to chosen vessel
+data.table; row of data corresponding to chosen vessel or NULL in case input is not ready
 }
 \description{
 Title
