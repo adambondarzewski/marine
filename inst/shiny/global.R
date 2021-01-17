@@ -18,7 +18,7 @@ data.table::setorder(vesselsTable, SHIP_ID, DATETIME)
 # extend table to keep also coordinates of previous point
 vesselsTable %<>% addLastCoordinates()
 
-vesselsTypes <- vesselsTableInitial %>%
+vesselsTypes <- vesselsTable %>%
   dplyr::pull(ship_type) %>%
   base::unique()
 
