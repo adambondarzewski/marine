@@ -11,16 +11,14 @@ shinyUI(dashboardPage(
         menuItem(tabName = "another", text = "Another Tab", icon = icon("heart"))
     )),
     dashboardBody(... =
-        useShinyjs(),
-        box(
-            fluidRow(
-                showOnMapOutput("main")
-            ),
-            fluidRow(
-                "Text"
-            ),
-            fluidRow(
-                filterVesselsInput("main", vesselsTypes)
-            )
-        )
+                      useShinyjs(),
+                  fluidRow(
+                      showOnMapOutput("main")
+                  ),
+                  fluidRow(
+                      vesselInfoOutput("main")
+                  ),
+                  fluidRow(
+                      filterVesselsInput("main", vesselsTypes)
+                  )
     )))

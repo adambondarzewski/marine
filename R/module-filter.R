@@ -11,7 +11,7 @@ filterVesselsInput <- function(id, vesselsTypes) {
   ns <- NS(id)
 
   tagList(
-    selectInput(ns("vesselType"), "vessel type", choices = vesselsTypes),
+    selectInput(ns("vesselType"), "Vessel type", choices = vesselsTypes),
     uiOutput(ns("nameControl"))
   )
 }
@@ -35,7 +35,7 @@ filterVesselsServer <- function(id) {
 
         req(input$vesselType)
         vesselsCurrent <- vesselsPerType[[input$vesselType]]
-        selectInput(ns("vesselName"), "vessel name", "")
+        selectInput(ns("vesselName"), "Vessel name", "")
       })
 
       observeEvent(input$vesselType,
