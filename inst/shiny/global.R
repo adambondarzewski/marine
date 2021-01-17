@@ -28,7 +28,7 @@ vesselsPerType <- lapply(vesselsTypes, function(x, tableIn) {
     filter(ship_type == x) %>%
     pull(SHIPNAME) %>%
     unique()
-}, tableIn = vesselsTableInitial)
+}, tableIn = vesselsTable)
 
 names(vesselsPerType) <- vesselsTypes
 
