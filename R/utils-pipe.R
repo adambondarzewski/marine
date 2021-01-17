@@ -8,4 +8,11 @@
 #' @export
 #' @importFrom magrittr %>%
 #' @usage lhs \%>\% rhs
+
+#' @name %<>%
+#' @rdname double pipe
+#' @keywords internal
+#' @export
+#' @importFrom magrittr %<>%
+#' @usage lhs \%<>\% rhs
 NULL

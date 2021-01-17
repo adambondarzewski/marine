@@ -20,3 +20,13 @@ shipsMax <- ships[, .SD[which.max(distance)], by = SHIP_ID]
 # > ships %>% pull(SHIP_ID) %>% unique() %>% length()
 # [1] 1210
 # this is to be investigated
+
+# speed test
+vesselsTableInitial[SHIP_ID == 850644, value := mapply(functionAux, LON, LON_PREV, LAT, LAT_PREV)]
+
+
+# select only observation with maximum distance by ship
+# warning: this also selects the latest observation, to achieve it table should be firstly sorted ascending by date
+setorder(vesselsTable, SHIP_ID, -DATETIME)
+vesselsTable <- vesselsTable[, .SD[which.max(distance)], by = SHIP_ID]
+

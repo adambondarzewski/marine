@@ -19,5 +19,6 @@ Imports:
     shiny.semantic,
     semantic.dashboard,
     leaflet,
-    shinyjs
+    shinyjs,
+    geosphere
 RoxygenNote: 7.1.1

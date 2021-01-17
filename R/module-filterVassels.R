@@ -21,7 +21,7 @@ filterVesselsInput <- function(id, vesselsTypes) {
 #'
 #' @param id
 #'
-#' @return data.table; row of data corresponding to chosen vessel or NULL in case input is not ready
+#' @return data.table; data corresponding to chosen vessel or NULL in case input is not ready
 #' @export
 filterVesselsServer <- function(id) {
   moduleServer(

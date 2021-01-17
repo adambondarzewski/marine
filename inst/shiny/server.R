@@ -3,16 +3,26 @@ library(Marine)
 library(leaflet)
 
 shinyServer(function(input, output, session) {
-  vesselChosen <- filterVesselsServer("main")
+  vesselsTableFiltered <- filterVesselsServer("main")
+
+  vesselRowMax <- reactive({
+    if (isTruthy(vesselsTableFiltered())) {
+      vesselsTableFiltered() %>% calculateGeographicalDistanceVectorized() %>%
+        selectRowWithLargestDistance()
+    } else {
+      vesselsTableFiltered()
+    }
+
+  })
 
   # TODO maybe wrap in module displayVesselInfo
-  observeEvent(vesselChosen(), ignoreInit = TRUE, {
+  observeEvent(vesselRowMax(), ignoreInit = TRUE, {
     shiny.semantic::showNotification(
       sprintf("Ship name: %s, destination: %s",
-              vesselChosen()$SHIPNAME,
-              vesselChosen()$DESTINATION)
+              vesselRowMax()$SHIPNAME,
+              vesselRowMax()$DESTINATION)
     )
   })
 
-  showOnMapServer("main", vesselChosen)
+  showOnMapServer("main", vesselRowMax)
 })

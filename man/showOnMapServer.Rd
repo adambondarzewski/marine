@@ -4,10 +4,10 @@
 \alias{showOnMapServer}
 \title{Title}
 \usage{
-showOnMapServer(id, vesselChosen)
+showOnMapServer(id, vesselRowMax)
 }
 \arguments{
-\item{vesselChosen}{}
+\item{vesselRowMax}{}
 }
 \value{
 

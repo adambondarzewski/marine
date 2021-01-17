@@ -12,25 +12,25 @@ showOnMapOutput <- function(id) {
 #' Title
 #'
 #' @param id
-#' @param vesselChosen
+#' @param vesselRowMax
 #'
 #' @return
 #' @export
-showOnMapServer <- function(id, vesselChosen) {
+showOnMapServer <- function(id, vesselRowMax) {
   moduleServer(
     id,
     function(input, output, session) {
 
       output$vesselLongestPath <- leaflet::renderLeaflet({
-        req(vesselChosen)
-        req(vesselChosen())
-        vesselChosenVar <- vesselChosen()
+        req(vesselRowMax)
+        req(vesselRowMax())
+        vesselRowMaxVar <- vesselRowMax()
         leaflet::leaflet() %>%
           addProviderTiles(providers$Stamen.TonerLite,
                            options = providerTileOptions(noWrap = TRUE)
           ) %>%
-          leaflet::addMarkers(lng = vesselChosenVar$LON, lat = vesselChosenVar$LAT) %>%
-          leaflet::addMarkers(lng = vesselChosenVar$LON_PREV, lat = vesselChosenVar$LAT_PREV)
+          leaflet::addMarkers(lng = vesselRowMaxVar$LON, lat = vesselRowMaxVar$LAT) %>%
+          leaflet::addMarkers(lng = vesselRowMaxVar$LON_PREV, lat = vesselRowMaxVar$LAT_PREV)
       })
     }
   )
