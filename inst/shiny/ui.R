@@ -5,20 +5,16 @@ library(leaflet)
 
 # Define UI for application that draws a histogram
 shinyUI(dashboardPage(
-    dashboardHeader(title = "Basic dashboard"),
-    dashboardSidebar(sidebarMenu(
-        menuItem(tabName = "home", text = "Home", icon = icon("home")),
-        menuItem(tabName = "another", text = "Another Tab", icon = icon("heart"))
-    )),
-    dashboardBody(... =
-                      useShinyjs(),
-                  fluidRow(
-                      showOnMapOutput("main")
-                  ),
-                  fluidRow(
-                      vesselInfoOutput("main")
-                  ),
-                  fluidRow(
-                      filterVesselsInput("main", vesselsTypes)
-                  )
+    header = dashboardHeader(tags$h1("The longest vessels trips"), class = "left"),
+    sidebar = NULL,
+    body = dashboardBody(
+        fluidRow(
+            vesselInfoOutput("main")
+            ),
+        fluidRow(
+            showOnMapOutput("main")
+            ),
+        fluidRow(
+            filterVesselsInput("main", vesselsTypes)
+        )
     )))
