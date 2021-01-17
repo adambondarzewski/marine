@@ -4,10 +4,12 @@
 \alias{filterVesselsServer}
 \title{Title}
 \usage{
-filterVesselsServer(id)
+filterVesselsServer(id, vesselsTable, vesselsPerType)
 }
 \arguments{
-\item{id}{}
+\item{vesselsTable}{table with vesels defined in global.R}
+
+\item{vesselsPerType}{list with vessels corresponding to types}
 }
 \value{
 data.table; data corresponding to chosen vessel or NULL in case input is not ready

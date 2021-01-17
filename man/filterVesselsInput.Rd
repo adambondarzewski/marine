@@ -7,7 +7,7 @@
 filterVesselsInput(id, vesselsTypes)
 }
 \arguments{
-\item{vesselsTypes}{}
+\item{vesselsTypes}{vector of characters, types of vessels (defined in global.R)}
 }
 \value{
 

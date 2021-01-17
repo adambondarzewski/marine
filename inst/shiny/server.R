@@ -3,7 +3,9 @@ library(Marine)
 library(leaflet)
 
 shinyServer(function(input, output, session) {
-  vesselsTableFiltered <- filterVesselsServer("main")
+  vesselsTableFiltered <- filterVesselsServer("main",
+                                              vesselsTable = vesselsTable,
+                                              vesselsPerType = vesselsPerType)
 
   vesselRowMax <- reactive({
     if (isTruthy(vesselsTableFiltered())) {

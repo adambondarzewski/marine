@@ -1,7 +1,7 @@
 #' Title
 #'
 #' @param id
-#' @param vesselsTypes
+#' @param vesselsTypes vector of characters, types of vessels (defined in global.R)
 #'
 #' @return
 #' @export
@@ -20,10 +20,12 @@ filterVesselsInput <- function(id, vesselsTypes) {
 #' Title
 #'
 #' @param id
+#' @param vesselsTable table with vesels defined in global.R
+#' @param vesselsPerType list with vessels corresponding to types
 #'
 #' @return data.table; data corresponding to chosen vessel or NULL in case input is not ready
 #' @export
-filterVesselsServer <- function(id) {
+filterVesselsServer <- function(id, vesselsTable, vesselsPerType) {
   moduleServer(
     id,
     function(input, output, session) {
