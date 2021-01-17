@@ -1,4 +1,3 @@
-library(data.table)
 library(magrittr)
 library(dplyr)
 library(Marine)
@@ -8,13 +7,13 @@ unzip(zipfile = system.file(package = "Marine", "extdata/vessels.zip"),
       junkpaths = TRUE,
       exdir = dirUnzipped)
 
-vesselsTable <- fread(file.path(dirUnzipped, "vessels.csv"))
+vesselsTable <- data.table::fread(file.path(dirUnzipped, "vessels.csv"))
 
 # solution taken from
 # https://stackoverflow.com/questions/60944443/calculate-euclidean-distance-between-points-with-rolling-function-in-data-table
 
 # make sure observations are sorted by time
-setorder(vesselsTable, SHIP_ID, DATETIME)
+data.table::setorder(vesselsTable, SHIP_ID, DATETIME)
 
 # extend table to keep also coordinates of previous point
 vesselsTable %<>% addLastCoordinates()

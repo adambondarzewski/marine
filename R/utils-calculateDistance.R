@@ -5,7 +5,6 @@
 #' @return
 #' @export
 #'
-#' @examples
 addLastCoordinates <- function(vesselsTable) {
   # make sure observations are in correct order
   data.table::setorder(vesselsTable, SHIP_ID, DATETIME)
